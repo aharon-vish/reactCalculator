@@ -94,7 +94,12 @@
 	        null,
 	        _react2.default.createElement(_InputDigit2.default, null),
 	        _react2.default.createElement(_AwesomeComponent2.default, null),
-	        _react2.default.createElement(_KeyBoard2.default, null)
+	        _react2.default.createElement(_KeyBoard2.default, null),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          'aharom is yofi'
+	        )
 	      );
 	    }
 	  }]);

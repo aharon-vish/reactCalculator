@@ -10,8 +10,9 @@ class App extends React.Component {
         <InputDigit />
         <AwesomeComponent />
         <KeyBoard/>
+      <div>aharom is yofi</div>
       </div>
-    );
+    )
   }
 }
 
