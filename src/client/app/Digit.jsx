@@ -7,8 +7,10 @@ class Digit extends React.Component {
   }
 
   render() {
+    var props = this.props;
+    console.log(props);
     return (
-      <button>
+      <button onClick={props.test}>
         {this.props.data}
       </button>
     );

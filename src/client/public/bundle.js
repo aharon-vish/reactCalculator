@@ -57,11 +57,11 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 34);
 	
-	var _InputDigit = __webpack_require__(/*! ./InputDigit.jsx */ 173);
+	var _InputDigit = __webpack_require__(/*! ./InputDigit.jsx */ 172);
 	
 	var _InputDigit2 = _interopRequireDefault(_InputDigit);
 	
-	var _KeyBoard = __webpack_require__(/*! ./KeyBoard.jsx */ 174);
+	var _KeyBoard = __webpack_require__(/*! ./KeyBoard.jsx */ 173);
 	
 	var _KeyBoard2 = _interopRequireDefault(_KeyBoard);
 	
@@ -83,19 +83,16 @@
 	  }
 	
 	  _createClass(App, [{
+	    key: 'test',
+	    value: function test() {}
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(_InputDigit2.default, null),
-	        _react2.default.createElement(AwesomeComponent, null),
-	        _react2.default.createElement(_KeyBoard2.default, null),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'aharom is yofi'
-	        )
+	        _react2.default.createElement(_KeyBoard2.default, null)
 	      );
 	    }
 	  }]);
@@ -21970,8 +21967,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 3)))
 
 /***/ },
-/* 172 */,
-/* 173 */
+/* 172 */
 /*!***************************************!*\
   !*** ./src/client/app/InputDigit.jsx ***!
   \***************************************/
@@ -22032,7 +22028,7 @@
 	exports.default = InputDigit;
 
 /***/ },
-/* 174 */
+/* 173 */
 /*!*************************************!*\
   !*** ./src/client/app/KeyBoard.jsx ***!
   \*************************************/
@@ -22048,7 +22044,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Digit = __webpack_require__(/*! ./Digit.jsx */ 175);
+	var _Digit = __webpack_require__(/*! ./Digit.jsx */ 174);
 	
 	var _Digit2 = _interopRequireDefault(_Digit);
 	
@@ -22057,22 +22053,26 @@
 	var KeyBoard = _react2.default.createClass({
 	    displayName: 'KeyBoard',
 	
-	    getDefaultProps: function getDefaultProps() {
-	        return { value: 'default value' };
-	    },
+	    // getDefaultProps: function() {
+	    //     return {value: 'default value'};
+	    // },
 	    digitKeyBoard: ['AC', '-/+', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='],
 	    getInitialState: function getInitialState() {
 	        return { data: this.digitKeyBoard };
 	    },
+	    tesrt: function tesrt() {
+	        console.log('hi');
+	    },
 	    render: function render() {
 	        var results = this.digitKeyBoard;
+	        var aaa = this.tesrt;
 	        console.log(this.state);
 	        console.log(this.props);
 	        return _react2.default.createElement(
-	            'ol',
+	            'div',
 	            null,
 	            results.map(function (result) {
-	                return _react2.default.createElement(_Digit2.default, { key: result, data: result });
+	                return _react2.default.createElement(_Digit2.default, { key: result, data: result, test: aaa });
 	            })
 	        );
 	    }
@@ -22080,7 +22080,7 @@
 	exports.default = KeyBoard;
 
 /***/ },
-/* 175 */
+/* 174 */
 /*!**********************************!*\
   !*** ./src/client/app/Digit.jsx ***!
   \**********************************/
@@ -22118,9 +22118,11 @@
 	  _createClass(Digit, [{
 	    key: 'render',
 	    value: function render() {
+	      var props = this.props;
+	      console.log(props);
 	      return _react2.default.createElement(
 	        'button',
-	        null,
+	        { onClick: props.test },
 	        this.props.data
 	      );
 	    }
