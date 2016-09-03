@@ -74,30 +74,38 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var App = function (_React$Component) {
-	  _inherits(App, _React$Component);
+	    _inherits(App, _React$Component);
 	
-	  function App() {
-	    _classCallCheck(this, App);
+	    function App(props) {
+	        _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-	  }
+	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	  _createClass(App, [{
-	    key: 'test',
-	    value: function test() {}
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_InputDigit2.default, null),
-	        _react2.default.createElement(_KeyBoard2.default, null)
-	      );
+	        _this.state = { data: '' };
+	        return _this;
 	    }
-	  }]);
 	
-	  return App;
+	    _createClass(App, [{
+	        key: 'handelClickDigitEvent',
+	        value: function handelClickDigitEvent(e) {
+	            if (Number.isInteger(parseInt(e.currentTarget.value)) || e.currentTarget.value === '.') {
+	                var str = this.state.data + e.currentTarget.value;
+	                return this.setState({ data: str });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_InputDigit2.default, { value: this.state.data }),
+	                _react2.default.createElement(_KeyBoard2.default, { handelClickDigit: this.handelClickDigitEvent.bind(this) })
+	            );
+	        }
+	    }]);
+	
+	    return App;
 	}(_react2.default.Component);
 	
 	(0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('app'));
@@ -21999,18 +22007,12 @@
 	    function InputDigit(props) {
 	        _classCallCheck(this, InputDigit);
 	
-	        var _this = _possibleConstructorReturn(this, (InputDigit.__proto__ || Object.getPrototypeOf(InputDigit)).call(this, props));
-	
-	        _this.state = {
-	            valueIput: 0
-	        };
-	        return _this;
+	        return _possibleConstructorReturn(this, (InputDigit.__proto__ || Object.getPrototypeOf(InputDigit)).call(this, props));
 	    }
 	
 	    _createClass(InputDigit, [{
 	        key: "keyDown",
 	        value: function keyDown(e) {
-	            console.log(e.keyCode);
 	            if ((e.keyCode < 48 || e.keyCode > 58) && e.keyCode !== 8) {
 	                e.preventDefault();
 	            }
@@ -22018,7 +22020,7 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return _react2.default.createElement("input", { type: "text", onKeyDown: this.keyDown });
+	            return _react2.default.createElement("input", { type: "text", value: this.props.value, onKeyDown: this.keyDown });
 	        }
 	    }]);
 	
@@ -22040,6 +22042,8 @@
 	    value: true
 	});
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -22050,33 +22054,43 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var KeyBoard = _react2.default.createClass({
-	    displayName: 'KeyBoard',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	    // getDefaultProps: function() {
-	    //     return {value: 'default value'};
-	    // },
-	    digitKeyBoard: ['AC', '-/+', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='],
-	    getInitialState: function getInitialState() {
-	        return { data: this.digitKeyBoard };
-	    },
-	    tesrt: function tesrt() {
-	        console.log('hi');
-	    },
-	    render: function render() {
-	        var results = this.digitKeyBoard;
-	        var aaa = this.tesrt;
-	        console.log(this.state);
-	        console.log(this.props);
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            results.map(function (result) {
-	                return _react2.default.createElement(_Digit2.default, { key: result, data: result, test: aaa });
-	            })
-	        );
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var KeyBoard = function (_React$Component) {
+	    _inherits(KeyBoard, _React$Component);
+	
+	    function KeyBoard(props) {
+	        _classCallCheck(this, KeyBoard);
+	
+	        var _this = _possibleConstructorReturn(this, (KeyBoard.__proto__ || Object.getPrototypeOf(KeyBoard)).call(this, props));
+	
+	        console.log(props);
+	        _this.state = {
+	            digitKeyBoard: ['AC', '-/+', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '=']
+	        };
+	        return _this;
 	    }
-	});
+	
+	    _createClass(KeyBoard, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                this.state.digitKeyBoard.map(function (btnKey) {
+	                    return _react2.default.createElement(_Digit2.default, { key: btnKey, data: btnKey, clickEvent: this.props.handelClickDigit });
+	                }, this)
+	            );
+	        }
+	    }]);
+	
+	    return KeyBoard;
+	}(_react2.default.Component);
+	
 	exports.default = KeyBoard;
 
 /***/ },
@@ -22089,10 +22103,8 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
@@ -22100,37 +22112,13 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Digit = function (_React$Component) {
-	  _inherits(Digit, _React$Component);
-	
-	  function Digit(props) {
-	    _classCallCheck(this, Digit);
-	
-	    return _possibleConstructorReturn(this, (Digit.__proto__ || Object.getPrototypeOf(Digit)).call(this, props));
-	  }
-	
-	  _createClass(Digit, [{
-	    key: 'render',
-	    value: function render() {
-	      var props = this.props;
-	      console.log(props);
-	      return _react2.default.createElement(
+	var Digit = function Digit(props) {
+	    return _react2.default.createElement(
 	        'button',
-	        { onClick: props.test },
-	        this.props.data
-	      );
-	    }
-	  }]);
-	
-	  return Digit;
-	}(_react2.default.Component);
-	
+	        { onClick: props.clickEvent, value: props.data },
+	        props.data
+	    );
+	};
 	exports.default = Digit;
 
 /***/ }

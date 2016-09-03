@@ -1,19 +1,11 @@
+
 import React from 'react';
 
-class Digit extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    var props = this.props;
-    console.log(props);
+const Digit = (props) => {
     return (
-      <button onClick={props.test}>
-        {this.props.data}
-      </button>
-    );
-  }
+            <button onClick={props.clickEvent} value={props.data}>
+                {props.data}
+            </button>
+        );
 }
 export default Digit;

@@ -1,35 +1,28 @@
 import React from 'react';
 import Digit from './Digit.jsx';
 
-var KeyBoard = React.createClass({
-    // getDefaultProps: function() {
-    //     return {value: 'default value'};
-    // },
-    digitKeyBoard: [
-      'AC','-/+','%','/',
-      '7','8','9','X',
-      '4','5','6','-',
-      '1','2','3','+',
-      '0','.','='
-    ],
-    getInitialState: function() {
-        return {data: this.digitKeyBoard};
-    },
-    tesrt: function(){
-        console.log('hi');
-    },
-    render: function() {
-        var results = this.digitKeyBoard;
-        var aaa = this.tesrt;
-        console.log(this.state);
-        console.log(this.props);
+class KeyBoard extends React.Component {
+
+    constructor(props) {
+        super(props);
+        console.log(props);
+        this.state ={
+            digitKeyBoard : ['AC', '-/+', '%', '/',
+                             '7', '8', '9', 'X',
+                             '4', '5', '6', '-',
+                             '1', '2', '3', '+',
+                             '0', '.', '=']
+        };
+    }
+
+    render() {
         return (
             <div>
-                {results.map(function(result) {
-                    return <Digit key={result} data={result} test={aaa} />;
-                })}
+                {this.state.digitKeyBoard.map(function (btnKey) {
+                    return <Digit key={btnKey} data={btnKey} clickEvent={this.props.handelClickDigit}/>;
+                },this)}
             </div>
         );
     }
-});
+}
 export default KeyBoard;
