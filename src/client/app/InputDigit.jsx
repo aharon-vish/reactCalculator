@@ -12,7 +12,7 @@ class InputDigit extends React.Component {
     }
     render() {
         return (
-            <input type="text" value={this.props.value} onKeyDown={this.keyDown}></input>
+            <input type="text" value={this.props.value}  onKeyDown={this.keyDown}></input>
         );
     }
 }

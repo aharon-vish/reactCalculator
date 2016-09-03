@@ -5,7 +5,6 @@ class KeyBoard extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state ={
             digitKeyBoard : ['AC', '-/+', '%', '/',
                              '7', '8', '9', 'X',
@@ -19,7 +18,10 @@ class KeyBoard extends React.Component {
         return (
             <div>
                 {this.state.digitKeyBoard.map(function (btnKey) {
-                    return <Digit key={btnKey} data={btnKey} clickEvent={this.props.handelClickDigit}/>;
+                    if(Number.isInteger(parseInt(btnKey))){
+                        return <Digit key={btnKey} data={btnKey} number clickEvent={this.props.handelClickDigit}/>;
+                    }else
+                        return <Digit key={btnKey} data={btnKey} mathAction clickEvent={this.props.handelClickDigit}/>;
                 },this)}
             </div>
         );

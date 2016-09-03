@@ -22068,7 +22068,6 @@
 	
 	        var _this = _possibleConstructorReturn(this, (KeyBoard.__proto__ || Object.getPrototypeOf(KeyBoard)).call(this, props));
 	
-	        console.log(props);
 	        _this.state = {
 	            digitKeyBoard: ['AC', '-/+', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '=']
 	        };
@@ -22082,7 +22081,9 @@
 	                'div',
 	                null,
 	                this.state.digitKeyBoard.map(function (btnKey) {
-	                    return _react2.default.createElement(_Digit2.default, { key: btnKey, data: btnKey, clickEvent: this.props.handelClickDigit });
+	                    if (Number.isInteger(parseInt(btnKey))) {
+	                        return _react2.default.createElement(_Digit2.default, { key: btnKey, data: btnKey, number: true, clickEvent: this.props.handelClickDigit });
+	                    } else return _react2.default.createElement(_Digit2.default, { key: btnKey, data: btnKey, mathAction: true, clickEvent: this.props.handelClickDigit });
 	                }, this)
 	            );
 	        }
@@ -22115,7 +22116,8 @@
 	var Digit = function Digit(props) {
 	    return _react2.default.createElement(
 	        'button',
-	        { onClick: props.clickEvent, value: props.data },
+	        { onClick: props.clickEvent, value: props.data,
+	            'data-set': props.number ? 'number' : 'mathAction' },
 	        props.data
 	    );
 	};
