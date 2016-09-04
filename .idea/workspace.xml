@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51f61944-860a-4627-b659-993abec2e84e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/client/app/script.jsx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/Digit.jsx" afterPath="$PROJECT_DIR$/src/client/app/Digit.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/InputDigit.jsx" afterPath="$PROJECT_DIR$/src/client/app/InputDigit.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/KeyBoard.jsx" afterPath="$PROJECT_DIR$/src/client/app/KeyBoard.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/index.jsx" afterPath="$PROJECT_DIR$/src/client/app/index.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/public/bundle.js" afterPath="$PROJECT_DIR$/src/client/public/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/public/bundle.js.map" afterPath="$PROJECT_DIR$/src/client/public/bundle.js.map" />
     </list>
@@ -40,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/app/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="81" selection-start-line="24" selection-start-column="81" selection-end-line="24" selection-end-column="81" />
+            <state relative-caret-position="30">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -52,21 +53,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KeyBoard.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/app/KeyBoard.jsx">
+      <file leaf-file-name="Digit.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/app/Digit.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="21" column="71" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="71" />
+            <state relative-caret-position="165">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Digit.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/app/Digit.jsx">
+      <file leaf-file-name="KeyBoard.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/app/KeyBoard.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="420">
+              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -83,10 +84,10 @@
         <option value="$PROJECT_DIR$/src/client/public/bundle.js" />
         <option value="$PROJECT_DIR$/src/client/app/d.js" />
         <option value="$PROJECT_DIR$/src/client/app/d.jsx" />
-        <option value="$PROJECT_DIR$/src/client/app/index.jsx" />
-        <option value="$PROJECT_DIR$/src/client/app/KeyBoard.jsx" />
         <option value="$PROJECT_DIR$/src/client/app/InputDigit.jsx" />
         <option value="$PROJECT_DIR$/src/client/app/Digit.jsx" />
+        <option value="$PROJECT_DIR$/src/client/app/KeyBoard.jsx" />
+        <option value="$PROJECT_DIR$/src/client/app/index.jsx" />
       </list>
     </option>
   </component>
@@ -287,12 +288,12 @@
       <workItem from="1472820109017" duration="692000" />
       <workItem from="1472822001135" duration="246000" />
       <workItem from="1472826705246" duration="14000" />
-      <workItem from="1472833014681" duration="9025000" />
+      <workItem from="1472833014681" duration="14339000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18351000" />
+    <option name="totallyTimeSpent" value="23665000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
@@ -351,16 +352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="81" selection-start-line="24" selection-start-column="81" selection-end-line="24" selection-end-column="81" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/InputDigit.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -369,10 +360,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/app/KeyBoard.jsx">
+    <entry file="file://$PROJECT_DIR$/src/client/app/script.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="71" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="71" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -382,6 +373,24 @@
         <state relative-caret-position="165">
           <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/KeyBoard.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/app/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

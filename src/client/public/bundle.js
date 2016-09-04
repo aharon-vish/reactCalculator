@@ -81,16 +81,44 @@
 	
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	        _this.state = { data: '' };
+	        _this.state = { data: '', dotUse: true };
 	        return _this;
 	    }
 	
 	    _createClass(App, [{
 	        key: 'handelClickDigitEvent',
 	        value: function handelClickDigitEvent(e) {
-	            if (Number.isInteger(parseInt(e.currentTarget.value)) || e.currentTarget.value === '.') {
-	                var str = this.state.data + e.currentTarget.value;
-	                return this.setState({ data: str });
+	            var eventValue = e.currentTarget.value;
+	            var action = eventValue !== '.' ? e.currentTarget.getAttribute('action') : '.';
+	
+	            switch (action) {
+	                case 'number':
+	                    return this.setState({ data: this.state.data + e.currentTarget.value });
+	                    break;
+	                case 'mathAction':
+	                    if (this.checkInputValue()) {
+	                        return this.setState({ data: this.state.data + ' ' + e.currentTarget.value + ' ' });
+	                    }
+	                    break;
+	                case '.':
+	                    if (this.checkInputValue() && this.state.dotUse) {
+	                        this.state.dotUse = false;
+	                        return this.setState({ data: this.state.data + e.currentTarget.value });
+	                    }
+	                    break;
+	                default:
+	                    console.log('never mind');
+	            }
+	        }
+	    }, {
+	        key: 'checkInputValue',
+	        value: function checkInputValue() {
+	            var splits = this.state.data.split('');
+	            if (splits.length) {
+	                if (Number.isInteger(parseInt(splits[splits.length - 1]))) {
+	                    return true;
+	                }
+	                return false;
 	            }
 	        }
 	    }, {
@@ -22069,7 +22097,7 @@
 	        var _this = _possibleConstructorReturn(this, (KeyBoard.__proto__ || Object.getPrototypeOf(KeyBoard)).call(this, props));
 	
 	        _this.state = {
-	            digitKeyBoard: ['AC', '-/+', '%', '/', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '=']
+	            digitKeyBoard: [{ btnValue: 'AC' }, { btnValue: '-/+' }, { btnValue: '%' }, { btnValue: '/' }, { btnValue: '7' }, { btnValue: '8' }, { btnValue: '9' }, { btnValue: 'X' }, { btnValue: '4' }, { btnValue: '5' }, { btnValue: '6' }, { btnValue: '-' }, { btnValue: '1' }, { btnValue: '2' }, { btnValue: '3' }, { btnValue: '+' }, { btnValue: '0' }, { btnValue: '.' }, { btnValue: '=' }]
 	        };
 	        return _this;
 	    }
@@ -22081,9 +22109,10 @@
 	                'div',
 	                null,
 	                this.state.digitKeyBoard.map(function (btnKey) {
-	                    if (Number.isInteger(parseInt(btnKey))) {
-	                        return _react2.default.createElement(_Digit2.default, { key: btnKey, data: btnKey, number: true, clickEvent: this.props.handelClickDigit });
-	                    } else return _react2.default.createElement(_Digit2.default, { key: btnKey, data: btnKey, mathAction: true, clickEvent: this.props.handelClickDigit });
+	                    if (Number.isInteger(parseInt(btnKey.btnValue))) {
+	                        return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, number: true,
+	                            clickEvent: this.props.handelClickDigit });
+	                    } else return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, mathAction: true, clickEvent: this.props.handelClickDigit });
 	                }, this)
 	            );
 	        }
@@ -22117,7 +22146,7 @@
 	    return _react2.default.createElement(
 	        'button',
 	        { onClick: props.clickEvent, value: props.data,
-	            'data-set': props.number ? 'number' : 'mathAction' },
+	            action: props.number ? 'number' : 'mathAction' },
 	        props.data
 	    );
 	};
