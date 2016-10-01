@@ -10,15 +10,19 @@ class KeyBoard extends React.Component {
             height: '90%',
             display: 'flex',
             flexWrap: 'wrap',
-            border: '1px solid red'
         };
-        this.state ={
-            digitKeyBoard : [{btnValue:'AC'}, {btnValue:'-/+'},{btnValue: '%'},{btnValue: '/'},
-                             {btnValue:'7'}, {btnValue:'8'}, {btnValue:'9'}, {btnValue:'X'},
-                             {btnValue:'4'},{btnValue: '5'},{btnValue: '6'},{btnValue: '-'},
-                             {btnValue:'1'},{btnValue: '2'},{btnValue: '3'},{btnValue: '+'},
-                             {btnValue:'0'},{btnValue: '.'}, {btnValue:'='}],
-            style:divStyle
+        this.state = {
+            digitKeyBoard: [
+                {btnValue: 'AC', color: '#001f3f'}, {btnValue: '-/+', color: '#001f3f'},
+                {btnValue: '%', color: '#001f3f'}, {btnValue: '/', color: '#0074D9'},
+                {btnValue: '7', color: '#0074D9'}, {btnValue: '8', color: '#0074D9'},
+                {btnValue: '9', color: '#7FDBFF'}, {btnValue: 'X', color: '#7FDBFF'},
+                {btnValue: '4', color: '#7FDBFF'}, {btnValue: '5', color: '#39CCCC'},
+                {btnValue: '6', color: '#39CCCC'}, {btnValue: '-', color: '#39CCCC'},
+                {btnValue: '1', color: '#2ECC40'}, {btnValue: '2', color: '#2ECC40'},
+                {btnValue: '3', color: '#2ECC40'}, {btnValue: '+', color: '#FF851B'},
+                {btnValue: '0', color: '#FF851B'}, {btnValue: '.', color: '#FF851B'},
+                {btnValue: '=', color: '#F012BE',marginLeft: '33.3%'}], style: divStyle
         };
     }
 
@@ -26,12 +30,13 @@ class KeyBoard extends React.Component {
         return (
             <div style={this.state.style}>
                 {this.state.digitKeyBoard.map(function (btnKey) {
-                    if(Number.isInteger(parseInt(btnKey.btnValue))){
-                        return <Digit key={btnKey.btnValue} data={btnKey.btnValue} number
+                    if (Number.isInteger(parseInt(btnKey.btnValue))) {
+                        return <Digit key={btnKey.btnValue} data={btnKey.btnValue} number style={btnKey}
                                       clickEvent={this.props.handelClickDigit}/>;
-                    }else
-                        return <Digit key={btnKey.btnValue} data={btnKey.btnValue} mathAction clickEvent={this.props.handelClickDigit}/>;
-                },this)}
+                    } else
+                        return <Digit key={btnKey.btnValue} style={btnKey}
+                                      data={btnKey.btnValue} mathAction clickEvent={this.props.handelClickDigit}/>;
+                }, this)}
             </div>
         );
     }

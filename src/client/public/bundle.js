@@ -22110,12 +22110,10 @@
 	            width: '100%',
 	            height: '90%',
 	            display: 'flex',
-	            flexWrap: 'wrap',
-	            border: '1px solid red'
+	            flexWrap: 'wrap'
 	        };
 	        _this.state = {
-	            digitKeyBoard: [{ btnValue: 'AC' }, { btnValue: '-/+' }, { btnValue: '%' }, { btnValue: '/' }, { btnValue: '7' }, { btnValue: '8' }, { btnValue: '9' }, { btnValue: 'X' }, { btnValue: '4' }, { btnValue: '5' }, { btnValue: '6' }, { btnValue: '-' }, { btnValue: '1' }, { btnValue: '2' }, { btnValue: '3' }, { btnValue: '+' }, { btnValue: '0' }, { btnValue: '.' }, { btnValue: '=' }],
-	            style: divStyle
+	            digitKeyBoard: [{ btnValue: 'AC', color: '#001f3f' }, { btnValue: '-/+', color: '#001f3f' }, { btnValue: '%', color: '#001f3f' }, { btnValue: '/', color: '#0074D9' }, { btnValue: '7', color: '#0074D9' }, { btnValue: '8', color: '#0074D9' }, { btnValue: '9', color: '#7FDBFF' }, { btnValue: 'X', color: '#7FDBFF' }, { btnValue: '4', color: '#7FDBFF' }, { btnValue: '5', color: '#39CCCC' }, { btnValue: '6', color: '#39CCCC' }, { btnValue: '-', color: '#39CCCC' }, { btnValue: '1', color: '#2ECC40' }, { btnValue: '2', color: '#2ECC40' }, { btnValue: '3', color: '#2ECC40' }, { btnValue: '+', color: '#FF851B' }, { btnValue: '0', color: '#FF851B' }, { btnValue: '.', color: '#FF851B' }, { btnValue: '=', color: '#F012BE', marginLeft: '33.3%' }], style: divStyle
 	        };
 	        return _this;
 	    }
@@ -22128,9 +22126,10 @@
 	                { style: this.state.style },
 	                this.state.digitKeyBoard.map(function (btnKey) {
 	                    if (Number.isInteger(parseInt(btnKey.btnValue))) {
-	                        return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, number: true,
+	                        return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, number: true, style: btnKey,
 	                            clickEvent: this.props.handelClickDigit });
-	                    } else return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, mathAction: true, clickEvent: this.props.handelClickDigit });
+	                    } else return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, style: btnKey,
+	                        data: btnKey.btnValue, mathAction: true, clickEvent: this.props.handelClickDigit });
 	                }, this)
 	            );
 	        }
@@ -22161,9 +22160,15 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Digit = function Digit(props) {
+	
 	    var btnStyle = {
 	        flex: '0 0 33.33%',
-	        padding: '5px'
+	        padding: '5px',
+	        background: props.style.color,
+	        marginLeft: props.style.marginLeft ? props.style.marginLeft : '',
+	        color: 'wheat',
+	        fontSize: '300%',
+	        fontWeight: 'bold'
 	    };
 	    return _react2.default.createElement(
 	        'button',
