@@ -22009,7 +22009,7 @@
   \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22035,20 +22035,30 @@
 	    function InputDigit(props) {
 	        _classCallCheck(this, InputDigit);
 	
-	        return _possibleConstructorReturn(this, (InputDigit.__proto__ || Object.getPrototypeOf(InputDigit)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (InputDigit.__proto__ || Object.getPrototypeOf(InputDigit)).call(this, props));
+	
+	        var inputStyle = {
+	            width: '100%',
+	            height: '10%',
+	            fontSize: '300%',
+	            fontWeight: 'bold'
+	        };
+	        _this.state = { style: inputStyle };
+	
+	        return _this;
 	    }
 	
 	    _createClass(InputDigit, [{
-	        key: "keyDown",
+	        key: 'keyDown',
 	        value: function keyDown(e) {
 	            if ((e.keyCode < 48 || e.keyCode > 58) && e.keyCode !== 8) {
 	                e.preventDefault();
 	            }
 	        }
 	    }, {
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement("input", { type: "text", value: this.props.value, onKeyDown: this.keyDown });
+	            return _react2.default.createElement('input', { style: this.state.style, type: 'text', value: this.props.value, onKeyDown: this.keyDown });
 	        }
 	    }]);
 	
@@ -22096,8 +22106,16 @@
 	
 	        var _this = _possibleConstructorReturn(this, (KeyBoard.__proto__ || Object.getPrototypeOf(KeyBoard)).call(this, props));
 	
+	        var divStyle = {
+	            width: '100%',
+	            height: '90%',
+	            display: 'flex',
+	            flexWrap: 'wrap',
+	            border: '1px solid red'
+	        };
 	        _this.state = {
-	            digitKeyBoard: [{ btnValue: 'AC' }, { btnValue: '-/+' }, { btnValue: '%' }, { btnValue: '/' }, { btnValue: '7' }, { btnValue: '8' }, { btnValue: '9' }, { btnValue: 'X' }, { btnValue: '4' }, { btnValue: '5' }, { btnValue: '6' }, { btnValue: '-' }, { btnValue: '1' }, { btnValue: '2' }, { btnValue: '3' }, { btnValue: '+' }, { btnValue: '0' }, { btnValue: '.' }, { btnValue: '=' }]
+	            digitKeyBoard: [{ btnValue: 'AC' }, { btnValue: '-/+' }, { btnValue: '%' }, { btnValue: '/' }, { btnValue: '7' }, { btnValue: '8' }, { btnValue: '9' }, { btnValue: 'X' }, { btnValue: '4' }, { btnValue: '5' }, { btnValue: '6' }, { btnValue: '-' }, { btnValue: '1' }, { btnValue: '2' }, { btnValue: '3' }, { btnValue: '+' }, { btnValue: '0' }, { btnValue: '.' }, { btnValue: '=' }],
+	            style: divStyle
 	        };
 	        return _this;
 	    }
@@ -22107,7 +22125,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { style: this.state.style },
 	                this.state.digitKeyBoard.map(function (btnKey) {
 	                    if (Number.isInteger(parseInt(btnKey.btnValue))) {
 	                        return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, number: true,
@@ -22143,9 +22161,14 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Digit = function Digit(props) {
+	    var btnStyle = {
+	        flex: '0 0 33.33%',
+	        padding: '5px'
+	    };
 	    return _react2.default.createElement(
 	        'button',
-	        { onClick: props.clickEvent, value: props.data,
+	        { style: btnStyle,
+	            onClick: props.clickEvent, value: props.data,
 	            action: props.number ? 'number' : 'mathAction' },
 	        props.data
 	    );

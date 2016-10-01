@@ -24,8 +24,8 @@ class App extends React.Component {
                 }
                 break;
             case '.':
-                if (this.checkInputValue() &&  this.state.dotUse) {
-                    this.state.dotUse=false;
+                if (this.checkInputValue() && this.state.dotUse) {
+                    this.state.dotUse = false;
                     return this.setState({data: this.state.data + e.currentTarget.value});
                 }
                 break;
