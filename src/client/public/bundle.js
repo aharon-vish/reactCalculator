@@ -81,7 +81,33 @@
 	
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	        _this.state = { data: '', dotUse: true };
+	        _this.state = {
+	            sum: '',
+	            flagRotateY: true,
+	            data: '',
+	            dotUse: true,
+	            contanierStyle: {
+	                perspective: '1000px'
+	            },
+	            flipperStyle: {
+	                transition: '0.6s',
+	                transformStyle: 'preserve-3d',
+	                position: 'relative',
+	                transform: ''
+	            },
+	            backStyle: {
+	                transform: 'rotateY(180deg)',
+	                position: 'absolute',
+	                top: '0',
+	                display: 'flex',
+	                justifyContent: 'center',
+	                width: '50%',
+	                margin: '0 25% 0 25%',
+	                flexDirection: 'column',
+	                alignItems: 'center'
+	            }
+	
+	        };
 	        return _this;
 	    }
 	
@@ -97,10 +123,23 @@
 	                    break;
 	                case 'mathAction':
 	                    if (this.checkInputValue()) {
-	                        return this.setState({ data: this.state.data + ' ' + e.currentTarget.value + ' ' });
+	                        if (eventValue === '-/+') {
+	                            var arr = this.state.data.split(" ");
+	                            if (arr.length > 0 && Number.isInteger(arr[arr.length - 1])) {
+	                                arr.splice(arr.length - 1, 0, '-');
+	                            }
+	                        } else return this.setState({ data: this.state.data + ' ' + e.currentTarget.value + ' ' });
 	                    }
 	                    break;
-	                case '.':
+	                case 'sumAction':
+	
+	                    return this.setState({
+	                        sum: eval(this.state.data),
+	                        flagRotateY: false,
+	                        data: ''
+	                    });
+	                    break;
+	                case '':
 	                    if (this.checkInputValue() && this.state.dotUse) {
 	                        this.state.dotUse = false;
 	                        return this.setState({ data: this.state.data + e.currentTarget.value });
@@ -122,13 +161,58 @@
 	            }
 	        }
 	    }, {
+	        key: 'flipMeBackPlease',
+	        value: function flipMeBackPlease() {
+	            return this.setState({
+	                sum: '',
+	                flagRotateY: true
+	
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                null,
-	                _react2.default.createElement(_InputDigit2.default, { value: this.state.data }),
-	                _react2.default.createElement(_KeyBoard2.default, { handelClickDigit: this.handelClickDigitEvent.bind(this) })
+	                { className: 'flip-container', style: this.state.contanierStyle },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'flipper', style: Object.assign(this.state.flipperStyle, this.state.flagRotateY ? { transform: '' } : { transform: 'rotateY(180deg)' }) },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'front' },
+	                        _react2.default.createElement(_InputDigit2.default, { value: this.state.data }),
+	                        _react2.default.createElement(_KeyBoard2.default, { handelClickDigit: this.handelClickDigitEvent.bind(this) })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'back', style: this.state.backStyle },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'number' },
+	                            this.state.sum
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'backButton', onClick: this.flipMeBackPlease.bind(this) },
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'aBack' },
+	                                'Flip'
+	                            ),
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'bBack' },
+	                                'Me'
+	                            ),
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'cBack' },
+	                                'Back'
+	                            )
+	                        )
+	                    )
+	                )
 	            );
 	        }
 	    }]);
@@ -22113,7 +22197,7 @@
 	            flexWrap: 'wrap'
 	        };
 	        _this.state = {
-	            digitKeyBoard: [{ btnValue: 'AC', color: '#001f3f' }, { btnValue: '-/+', color: '#001f3f' }, { btnValue: '%', color: '#001f3f' }, { btnValue: '/', color: '#0074D9' }, { btnValue: '7', color: '#0074D9' }, { btnValue: '8', color: '#0074D9' }, { btnValue: '9', color: '#7FDBFF' }, { btnValue: 'X', color: '#7FDBFF' }, { btnValue: '4', color: '#7FDBFF' }, { btnValue: '5', color: '#39CCCC' }, { btnValue: '6', color: '#39CCCC' }, { btnValue: '-', color: '#39CCCC' }, { btnValue: '1', color: '#2ECC40' }, { btnValue: '2', color: '#2ECC40' }, { btnValue: '3', color: '#2ECC40' }, { btnValue: '+', color: '#FF851B' }, { btnValue: '0', color: '#FF851B' }, { btnValue: '.', color: '#FF851B' }, { btnValue: '=', color: '#F012BE', marginLeft: '33.3%' }], style: divStyle
+	            digitKeyBoard: [{ btnValue: 'AC', color: '#001f3f' }, { btnValue: '-/+', color: '#001f3f' }, { btnValue: '%', color: '#001f3f' }, { btnValue: '/', color: '#001f3f' }, { btnValue: '7', color: '#0074D9' }, { btnValue: '8', color: '#0074D9' }, { btnValue: '9', color: '#0074D9' }, { btnValue: '*', color: '#001f3f' }, { btnValue: '4', color: '#39CCCC' }, { btnValue: '5', color: '#39CCCC' }, { btnValue: '6', color: '#39CCCC' }, { btnValue: '-', color: '#001f3f' }, { btnValue: '1', color: '#2ECC40' }, { btnValue: '2', color: '#2ECC40' }, { btnValue: '3', color: '#2ECC40' }, { btnValue: '+', color: '#001f3f' }, { btnValue: '0', color: '#FF851B', width: '0 0 50%' }, { btnValue: '.', color: '#FF851B' }, { btnValue: '=', color: '#F012BE' }], style: divStyle
 	        };
 	        return _this;
 	    }
@@ -22126,10 +22210,17 @@
 	                { style: this.state.style },
 	                this.state.digitKeyBoard.map(function (btnKey) {
 	                    if (Number.isInteger(parseInt(btnKey.btnValue))) {
-	                        return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, number: true, style: btnKey,
+	                        return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, data: btnKey.btnValue, action: 'number', style: btnKey,
 	                            clickEvent: this.props.handelClickDigit });
-	                    } else return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, style: btnKey,
-	                        data: btnKey.btnValue, mathAction: true, clickEvent: this.props.handelClickDigit });
+	                    } else {
+	                        if (btnKey.btnValue === '=') {
+	                            return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, style: btnKey,
+	                                data: btnKey.btnValue, action: 'sumAction', clickEvent: this.props.handelClickDigit });
+	                        } else {
+	                            return _react2.default.createElement(_Digit2.default, { key: btnKey.btnValue, style: btnKey,
+	                                data: btnKey.btnValue, action: 'mathAction', clickEvent: this.props.handelClickDigit });
+	                        }
+	                    }
 	                }, this)
 	            );
 	        }
@@ -22162,7 +22253,7 @@
 	var Digit = function Digit(props) {
 	
 	    var btnStyle = {
-	        flex: '0 0 33.33%',
+	        flex: props.style.width ? '0 0 50%' : '0 0 25%',
 	        padding: '5px',
 	        background: props.style.color,
 	        marginLeft: props.style.marginLeft ? props.style.marginLeft : '',
@@ -22174,7 +22265,7 @@
 	        'button',
 	        { style: btnStyle,
 	            onClick: props.clickEvent, value: props.data,
-	            action: props.number ? 'number' : 'mathAction' },
+	            action: props.action },
 	        props.data
 	    );
 	};
