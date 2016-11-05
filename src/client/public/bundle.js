@@ -122,13 +122,19 @@
 	                    return this.setState({ data: this.state.data + e.currentTarget.value });
 	                    break;
 	                case 'mathAction':
-	                    if (this.checkInputValue()) {
-	                        if (eventValue === '-/+') {
-	                            var arr = this.state.data.split(" ");
-	                            if (arr.length > 0 && Number.isInteger(arr[arr.length - 1])) {
-	                                arr.splice(arr.length - 1, 0, '-');
-	                            }
-	                        } else return this.setState({ data: this.state.data + ' ' + e.currentTarget.value + ' ' });
+	                    if (eventValue === '-/+') {
+	                        if (this.state.data.length === 0) {
+	                            return this.setState({ data: '-' });
+	                        } else if (this.state.data.length === 1 && this.state.data === '-') {
+	                            return this.setState({ data: '' });
+	                        } else {
+	                            return;
+	                        }
+	                    } else if (eventValue === 'AC') {
+	                        return this.setState({ data: '' });
+	                    } else if (eventValue) {
+	
+	                        return this.setState({ data: this.state.data + ' ' + e.currentTarget.value + ' ' });
 	                    }
 	                    break;
 	                case 'sumAction':
@@ -166,7 +172,6 @@
 	            return this.setState({
 	                sum: '',
 	                flagRotateY: true
-	
 	            });
 	        }
 	    }, {

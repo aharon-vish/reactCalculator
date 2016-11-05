@@ -7,7 +7,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sum:'',
+            sum: '',
             flagRotateY: true,
             data: '',
             dotUse: true,
@@ -45,14 +45,20 @@ class App extends React.Component {
                 return this.setState({data: this.state.data + e.currentTarget.value});
                 break;
             case 'mathAction':
-                if (this.checkInputValue()) {
-                if(eventValue === '-/+'){
-                   var arr = this.state.data.split(" ");
-                    if(arr.length>0 && Number.isInteger(arr[arr.length-1])){
-                        arr.splice(arr.length-1, 0, '-');
+                if (eventValue === '-/+') {
+                    if(this.state.data.length === 0){
+                        return this.setState({data: '-'});
+                    } else if(this.state.data.length === 1 && this.state.data === '-' ){
+                        return this.setState({data: ''});
+                    }else {
+                        return;
                     }
+                }
+                else if (eventValue === 'AC') {
+                    return this.setState({data: ''});
+                }
+                else if(eventValue) {
 
-                }else
                     return this.setState({data: this.state.data + ' ' + e.currentTarget.value + ' '});
                 }
                 break;
@@ -60,9 +66,9 @@ class App extends React.Component {
 
                 return this.setState(
                     {
-                        sum:eval(this.state.data),
+                        sum: eval(this.state.data),
                         flagRotateY: false,
-                        data:''
+                        data: ''
                     }
                 );
                 break;
@@ -90,9 +96,8 @@ class App extends React.Component {
 
     flipMeBackPlease() {
         return this.setState({
-            sum:'',
+            sum: '',
             flagRotateY: true
-
         })
     }
 
